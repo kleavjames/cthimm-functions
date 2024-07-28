@@ -20,8 +20,8 @@ const dateFormatTimeZone = (yourDate: Date) => {
 Deno.serve(async () => {
   const nowDate = dateFormatTimeZone(new Date());
 
-  const { error, data } = await supabase.from("bookings")
-    .select("*")
+  const { error } = await supabase.from("bookings")
+    .delete()
     .eq(
       "seat_status",
       "reserved",
@@ -35,7 +35,7 @@ Deno.serve(async () => {
   }
 
   return new Response(
-    JSON.stringify(data),
+    JSON.stringify(true),
     { headers: { "Content-Type": "application/json" } },
   );
 });
