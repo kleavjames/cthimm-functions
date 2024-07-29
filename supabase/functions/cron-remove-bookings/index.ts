@@ -30,7 +30,10 @@ Deno.serve(async () => {
   }
 
   return new Response(
-    JSON.stringify(true),
+    JSON.stringify({
+      message: "success",
+      data: `${nowDate} 15:50:00+00`,
+    }),
     { headers: { "Content-Type": "application/json" } },
   );
 });
